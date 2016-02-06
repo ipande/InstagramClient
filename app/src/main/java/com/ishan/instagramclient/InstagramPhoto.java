@@ -10,6 +10,15 @@ public class InstagramPhoto {
     private String profilePicURL;
     private int imageHeight;
     private int likesCount;
+    private int imageWidth;
+
+    public int getImageWidth() {
+        return imageWidth;
+    }
+
+    public void setImageWidth(int imageWidth) {
+        this.imageWidth = imageWidth;
+    }
 
     public String getProfilePicURL() {
         return profilePicURL;

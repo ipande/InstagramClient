@@ -57,9 +57,6 @@ public class PhotosActivity extends AppCompatActivity {
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
 
-
-
-
         lvphotos.setAdapter(instagramPhotosAdapter);
 
     }
@@ -90,6 +87,7 @@ public class PhotosActivity extends AppCompatActivity {
                         photo.setCaption(photoJSON.getJSONObject("caption").getString("text"));
                         photo.setImageURL(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url"));
                         photo.setImageHeight(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height"));
+                        photo.setImageWidth(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("width"));
                         photo.setLikesCount(photoJSON.getJSONObject("likes").getInt("count"));
                         photo.setProfilePicURL(photoJSON.getJSONObject("user").getString("profile_picture"));
 

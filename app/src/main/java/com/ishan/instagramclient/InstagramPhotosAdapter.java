@@ -52,8 +52,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
         //Insert image using picasso
 
         Picasso.with(getContext()).load(photo.getImageURL()).into(holder.ivPhoto);
+        int displayWidth = DeviceResolutionHelper.getDisplayWidth(getContext());
+        int imageTargetHeight = (photo.getImageWidth())*(displayWidth)/photo.getImageWidth();
 
-        Picasso.with(getContext()).load(photo.getProfilePicURL()).into(holder.ivProfilePic);
+        holder.ivPhoto.getLayoutParams().height = imageTargetHeight;
+        Picasso.with(getContext()).load(photo.getProfilePicURL()).
+                placeholder(R.drawable.loading_spinner).into(holder.ivProfilePic);
 
         // Return the completed view to render on screen
 
