@@ -7,9 +7,17 @@ public class InstagramPhoto {
     private String userName;
     private String caption;
     private String imageURL;
+    private String profilePicURL;
     private int imageHeight;
     private int likesCount;
 
+    public String getProfilePicURL() {
+        return profilePicURL;
+    }
+
+    public void setProfilePicURL(String profilePicURL) {
+        this.profilePicURL = profilePicURL;
+    }
 
     public String getUserName() {
         return userName;

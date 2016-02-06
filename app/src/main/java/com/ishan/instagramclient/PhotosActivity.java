@@ -74,6 +74,7 @@ public class PhotosActivity extends AppCompatActivity {
                         photo.setImageURL(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url"));
                         photo.setImageHeight(photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height"));
                         photo.setLikesCount(photoJSON.getJSONObject("likes").getInt("count"));
+                        photo.setProfilePicURL(photoJSON.getJSONObject("user").getString("profile_picture"));
 
                         instagramPhotos.add(photo);
                     }
