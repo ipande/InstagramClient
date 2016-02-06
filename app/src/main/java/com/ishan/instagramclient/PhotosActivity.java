@@ -15,6 +15,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
 public class PhotosActivity extends AppCompatActivity {
@@ -23,7 +25,9 @@ public class PhotosActivity extends AppCompatActivity {
 
     private ArrayList<InstagramPhoto> instagramPhotos;
     private InstagramPhotosAdapter instagramPhotosAdapter;
-    private SwipeRefreshLayout swipeContainer;
+    @Bind(R.id.swipeContainer)SwipeRefreshLayout swipeContainer;
+
+    @Bind(R.id.lvPhotos)ListView lvphotos;
 
 
 
@@ -35,7 +39,7 @@ public class PhotosActivity extends AppCompatActivity {
         instagramPhotos = new ArrayList<>();
         instagramPhotosAdapter = new InstagramPhotosAdapter(this,instagramPhotos);
         // Lookup the swipe container view
-        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
+        ButterKnife.bind(this);
 
         // Setup refresh listener which triggers new data loading
         swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -54,25 +58,12 @@ public class PhotosActivity extends AppCompatActivity {
                 android.R.color.holo_red_light);
 
 
-        //fetchPopularPhotos();
 
-
-        ListView lvphotos = (ListView) findViewById(R.id.lvPhotos);
 
         lvphotos.setAdapter(instagramPhotosAdapter);
 
     }
 
-//     send nw request
-//    Client ID: e05c462ebd86446ea48a5af73769b602
-//
-//    URL: https://api.instagram.com/v1/media/popular?access_token=ACCESS-TOKEN
-//
-//    JSON:
-//            - Type -> (data -> [X] -> "type" - image/video)
-//            - URL -> (data ->[x] -> images -> standard_resolution -> url)
-//            - Caption -> (data -> [X] -> "caption" -> text)
-//            - Author Name -> (data -> [X] -> user -> username)
     private void fetchPopularPhotos() {
 
         AsyncHttpClient client = new AsyncHttpClient();

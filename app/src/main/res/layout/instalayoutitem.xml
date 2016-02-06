@@ -26,6 +26,7 @@
         android:layout_height="wrap_content"
         android:text="User Name"
         android:id="@+id/tvInstaUser"
+        android:textColor="#125688"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/ivProfilePic"
         android:layout_toEndOf="@+id/ivProfilePic" />

@@ -12,10 +12,14 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * Created by ishanpande on 2/4/16.
  */
 public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
+    ViewHolder holder;
     public InstagramPhotosAdapter(Context context, List<InstagramPhoto> instagramPhotos) {
         super(context, 0, instagramPhotos);
     }
@@ -29,29 +33,45 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.instalayoutitem, parent, false);
+            holder = new ViewHolder(convertView);
+            convertView.setTag(holder);
         }
-        // Lookup view for data population
-        TextView tvUserName = (TextView) convertView.findViewById(R.id.tvInstaUser);
-        TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
-        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivInstaImage);
-        ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
+        
+        // Use a view holder and ButterKnife annotations
+        // To
+        holder = (ViewHolder) convertView.getTag();
 
         // Populate the data into the template view using the data object
-        tvUserName.setText(photo.getUserName());
-        tvCaption.setText(photo.getCaption());
+        holder.tvUserName.setText(photo.getUserName());
+        holder.tvCaption.setText(photo.getCaption());
 
         // clear prev image (if any)
-        ivPhoto.setImageResource(0);
-        ivProfilePic.setImageResource(0);
+        holder.ivPhoto.setImageResource(0);
+        holder.ivProfilePic.setImageResource(0);
 
         //Insert image using picasso
 
-        Picasso.with(getContext()).load(photo.getImageURL()).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.getImageURL()).into(holder.ivPhoto);
 
-        Picasso.with(getContext()).load(photo.getProfilePicURL()).into(ivProfilePic);
+        Picasso.with(getContext()).load(photo.getProfilePicURL()).into(holder.ivProfilePic);
 
         // Return the completed view to render on screen
 
         return convertView;
+    }
+
+    static class ViewHolder {
+        @Bind(R.id.tvInstaUser) TextView tvUserName;
+        @Bind(R.id.tvCaption) TextView tvCaption;
+        @Bind(R.id.ivInstaImage) ImageView ivPhoto;
+        @Bind(R.id.ivProfilePic) ImageView ivProfilePic;
+        //TextView tvUserName = (TextView) convertView.findViewById(R.id.tvInstaUser);
+        //TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
+        //ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivInstaImage);
+        //ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
+
+        public ViewHolder(View view) {
+            ButterKnife.bind(this, view);
+        }
     }
 }
