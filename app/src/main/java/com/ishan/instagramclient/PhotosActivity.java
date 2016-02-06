@@ -1,5 +1,6 @@
 package com.ishan.instagramclient;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +23,9 @@ public class PhotosActivity extends AppCompatActivity {
 
     private ArrayList<InstagramPhoto> instagramPhotos;
     private InstagramPhotosAdapter instagramPhotosAdapter;
+    private SwipeRefreshLayout swipeContainer;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +34,27 @@ public class PhotosActivity extends AppCompatActivity {
 
         instagramPhotos = new ArrayList<>();
         instagramPhotosAdapter = new InstagramPhotosAdapter(this,instagramPhotos);
+        // Lookup the swipe container view
+        swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
 
-        fetchPopularPhotos();
+        // Setup refresh listener which triggers new data loading
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // Your code to refresh the list here.
+                // Make sure you call swipeContainer.setRefreshing(false)
+                // once the network request has completed successfully.
+                fetchPopularPhotos();
+            }
+        });
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
+                android.R.color.holo_green_light,
+                android.R.color.holo_orange_light,
+                android.R.color.holo_red_light);
+
+
+        //fetchPopularPhotos();
 
 
         ListView lvphotos = (ListView) findViewById(R.id.lvPhotos);
@@ -58,6 +81,9 @@ public class PhotosActivity extends AppCompatActivity {
         client.get(URL,null,new JsonHttpResponseHandler(){
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                // Remember to CLEAR OUT old items before appending in the new ones
+                instagramPhotosAdapter.clear();
+
                 Log.d(APP_TAG,"Resp: "+response.toString());
 
                 JSONArray photosJSON = null;
@@ -78,8 +104,11 @@ public class PhotosActivity extends AppCompatActivity {
 
                         instagramPhotos.add(photo);
                     }
+                    instagramPhotosAdapter.addAll(instagramPhotos);
+                    // Now we call setRefreshing(false) to signal refresh has finished
+                    swipeContainer.setRefreshing(false);
 
-                    instagramPhotosAdapter.notifyDataSetChanged();
+                    //instagramPhotosAdapter.notifyDataSetChanged();
 
                 }catch(JSONException e){
 
