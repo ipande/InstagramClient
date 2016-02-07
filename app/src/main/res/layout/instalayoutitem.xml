@@ -58,9 +58,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
+        android:paddingLeft="1dp"
         android:text="Num Likes"
         android:id="@+id/tvNumLikes"
         android:textColor="#125688"
+        android:drawableLeft="@drawable/likeicon_1"
         android:layout_below="@+id/ivInstaImage"
         android:layout_alignParentLeft="true"
         android:textStyle="bold" />

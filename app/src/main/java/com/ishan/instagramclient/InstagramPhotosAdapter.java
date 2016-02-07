@@ -45,8 +45,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
         // Populate the data into the template view using the data object
         holder.tvUserName.setText(photo.getUserName());
         holder.tvCaption.setText(photo.getCaption());
-        Log.d(Constants.APP_TAG,"likes: "+ photo.getLikesCount());
-        holder.tvNumLikes.setText(""+photo.getLikesCount());
+
+        holder.tvNumLikes.setText(" "+photo.getLikesCount());
 
         // clear prev image (if any)
         holder.ivPhoto.setImageResource(0);
