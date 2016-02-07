@@ -19,7 +19,8 @@
         app:riv_border_color="#ffff"
         app:riv_mutate_background="true"
         app:riv_tile_mode="repeat"
-        app:riv_oval="true" />
+        app:riv_oval="true"
+        android:background="#ffffff" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -29,7 +30,9 @@
         android:textColor="#125688"
         android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/ivProfilePic"
-        android:layout_toEndOf="@+id/ivProfilePic" />
+        android:layout_toEndOf="@+id/ivProfilePic"
+        android:background="#ffffff"
+        android:textStyle="bold" />
 
     <ImageView
         android:layout_width="match_parent"
@@ -46,6 +49,31 @@
         android:layout_height="wrap_content"
         android:text="caption"
         android:id="@+id/tvCaption"
+        android:textColor="#125688"
+        android:layout_below="@+id/tvLikes"
+        android:layout_alignParentLeft="true"
+        android:background="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Num Likes"
+        android:id="@+id/tvNumLikes"
+        android:textColor="#125688"
         android:layout_below="@+id/ivInstaImage"
-        android:layout_alignParentLeft="true" />
+        android:layout_alignParentLeft="true"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text=" Likes"
+        android:id="@+id/tvLikes"
+        android:textColor="#125688"
+        android:layout_below="@+id/ivInstaImage"
+        android:layout_toRightOf="@+id/tvNumLikes"
+        android:layout_toEndOf="@+id/tvNumLikes"
+        android:textStyle="bold" />
 </RelativeLayout>

@@ -1,6 +1,7 @@
 package com.ishan.instagramclient;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,12 +39,14 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
         }
         
         // Use a view holder and ButterKnife annotations
-        // To
+        // To avoid findViewByID every time
         holder = (ViewHolder) convertView.getTag();
 
         // Populate the data into the template view using the data object
         holder.tvUserName.setText(photo.getUserName());
         holder.tvCaption.setText(photo.getCaption());
+        Log.d(Constants.APP_TAG,"likes: "+ photo.getLikesCount());
+        holder.tvNumLikes.setText(""+photo.getLikesCount());
 
         // clear prev image (if any)
         holder.ivPhoto.setImageResource(0);
@@ -69,10 +72,8 @@ public class InstagramPhotosAdapter extends ArrayAdapter<InstagramPhoto>{
         @Bind(R.id.tvCaption) TextView tvCaption;
         @Bind(R.id.ivInstaImage) ImageView ivPhoto;
         @Bind(R.id.ivProfilePic) ImageView ivProfilePic;
-        //TextView tvUserName = (TextView) convertView.findViewById(R.id.tvInstaUser);
-        //TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
-        //ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivInstaImage);
-        //ImageView ivProfilePic = (ImageView) convertView.findViewById(R.id.ivProfilePic);
+        @Bind(R.id.tvNumLikes) TextView tvNumLikes;
+
 
         public ViewHolder(View view) {
             ButterKnife.bind(this, view);
