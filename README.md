@@ -9,20 +9,22 @@ Time spent: 7 hours spent in total
 
 The following **required** functionality is completed:
 
-1) User can **scroll through current popular photos** from Instagram
-2) For each photo displayed, user can see the following details:
-3) Graphic, Caption, Username
-4) Relative timestamp, like count, user profile image
+* User can **scroll through current popular photos** from Instagram
+* For each photo displayed, user can see the following details:
+* Graphic, Caption, Username
+* Relative timestamp, like count, user profile image
 
 The following **optional** features are implemented:
 
-5) User can **pull-to-refresh** popular stream to get the latest popular photos
-6) Display each photo with the same style and proportions as the real Instagram
-7) Display each user profile image using a RoundedImageViewDisplay each user profile image using a [RoundedImageView](https://github.com/vinc3m1/RoundedImageView)
-8) Display a nice default placeholder graphic for each image during loading
-9) Improved the user interface through styling and coloring:
+* User can **pull-to-refresh** popular stream to get the latest popular photos
+* Display each photo with the same style and proportions as the real 
+Instagram
+* Display each user profile image using a RoundedImageViewDisplay each 
+user profile image using a [RoundedImageView](https://github com/vinc3m1/RoundedImageView)
+* Display a nice default placeholder graphic for each image during loading
+* Improved the user interface through styling and coloring:
 	Specifically, used standardized colors to match instagram colors, heart icon for likes, centered and padded views properly.
-
+    
 The following **additional** features are implemented:
 
 * Improved the jittery scrolling by calculating and setting imagevView height before loading it into picasso.
