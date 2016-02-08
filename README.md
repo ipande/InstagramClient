@@ -24,6 +24,7 @@ user profile image using a [RoundedImageView](https://github com/vinc3m1/Rounded
 * Display a nice default placeholder graphic for each image during loading
 * Improved the user interface through styling and coloring:
 	Specifically, used standardized colors to match instagram colors, heart icon for likes, centered and padded views properly.
+* Used the butterknife library for annotation based faster view bindings
     
 The following **additional** features are implemented:
 
