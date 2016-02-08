@@ -94,7 +94,7 @@ public class PhotosActivity extends AppCompatActivity {
                         instagramPhotos.add(photo);
                     }
                     instagramPhotosAdapter.addAll(instagramPhotos);
-                    // Now we call setRefreshing(false) to signal refresh has finished
+                    instagramPhotosAdapter.notifyDataSetChanged();
                     swipeContainer.setRefreshing(false);
 
                     //instagramPhotosAdapter.notifyDataSetChanged();
