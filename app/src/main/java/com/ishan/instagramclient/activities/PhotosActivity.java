@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.ishan.instagramclient.helpers.Constants;
 import com.ishan.instagramclient.helpers.InstagramPhoto;
 import com.ishan.instagramclient.adapters.InstagramPhotosAdapter;
 import com.ishan.instagramclient.R;
@@ -22,10 +23,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import cz.msebera.android.httpclient.Header;
 
-public class PhotosActivity extends AppCompatActivity {
-    public static final String CLIENT_ID = "e05c462ebd86446ea48a5af73769b602";
-    public static final String APP_TAG = "IntaClient";
+import static com.ishan.instagramclient.helpers.Constants.*;
 
+public class PhotosActivity extends AppCompatActivity {
     private ArrayList<InstagramPhoto> instagramPhotos;
     private InstagramPhotosAdapter instagramPhotosAdapter;
     @Bind(R.id.swipeContainer)SwipeRefreshLayout swipeContainer;
@@ -64,6 +64,19 @@ public class PhotosActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        swipeContainer.setRefreshing(true);
+        fetchPopularPhotos();
+    }
+
+    @Override
+    protected void onPause(){
+        super.onPause();
+        swipeContainer.setRefreshing(false);
+    }
+
     private void fetchPopularPhotos() {
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -100,10 +113,8 @@ public class PhotosActivity extends AppCompatActivity {
                     instagramPhotosAdapter.notifyDataSetChanged();
                     swipeContainer.setRefreshing(false);
 
-                    //instagramPhotosAdapter.notifyDataSetChanged();
-
                 }catch(JSONException e){
-
+                    Log.e(APP_TAG,"Error in parsing JSON object");
                 }
             }
 
