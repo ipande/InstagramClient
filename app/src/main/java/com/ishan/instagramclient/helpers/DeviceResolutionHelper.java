@@ -1,4 +1,4 @@
-package com.ishan.instagramclient;
+package com.ishan.instagramclient.helpers;
 
 import android.content.Context;
 import android.content.res.Resources;

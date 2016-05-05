@@ -1,7 +1,6 @@
-package com.ishan.instagramclient;
+package com.ishan.instagramclient.adapters;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ishan.instagramclient.helpers.DeviceResolutionHelper;
+import com.ishan.instagramclient.helpers.InstagramPhoto;
+import com.ishan.instagramclient.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

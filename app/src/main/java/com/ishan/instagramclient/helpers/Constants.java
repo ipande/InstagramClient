@@ -1,4 +1,4 @@
-package com.ishan.instagramclient;
+package com.ishan.instagramclient.helpers;
 
 /**
  * Created by ishanpande on 2/7/16.

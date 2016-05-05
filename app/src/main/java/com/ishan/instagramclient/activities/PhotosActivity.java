@@ -1,4 +1,4 @@
-package com.ishan.instagramclient;
+package com.ishan.instagramclient.activities;
 
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.ListView;
 
+import com.ishan.instagramclient.helpers.InstagramPhoto;
+import com.ishan.instagramclient.adapters.InstagramPhotosAdapter;
+import com.ishan.instagramclient.R;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
